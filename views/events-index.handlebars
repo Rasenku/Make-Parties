@@ -1,34 +1,22 @@
 <!-- events-index -->
-<div class="row mt-4">
-<div class="col-lg-6 offset-lg-3">
-    <h1>Events</h1>
-    {{#each events}}
-      <div class="card mt-3">
-      <img class="card-img-top" src="{{this.dataValues.imgUrl}}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{this.dataValues.title}}</h5>
-        <p class="card-text">{{this.dataValues.desc}}</p>
-        <div class="text-right">
-          <a href="#" class="btn btn-info">Rsvp</a>
-          <a href="#" class="btn btn-primary">View</a>
-          <a href="/events/{{this.dataValues.id}}" class="btn btn-primary">View</a>
-        </div>
-      </div>
-    </div>
-  {{/each}}
-      </div>
-  </div>
+ <div class="row mt-4">
+     <div class="col-lg-6 offset-lg-3">
+       <h1>Reviews</h1>
+       <a href="/events/new">New Event</a>
 
-  <!-- views/events-index.handlebars -->
-  <div class="row mt-4">
-      <div class="col-lg-6 offset-lg-3">
-          <!-- Add the following two lines -->
-          <h1>Reviews</h1>
-          <a href="/events/new">New Event</a>
-
-          <h1>Events</h1>
-          {{#each events}}
-          ...
-          {{/each}}
-      </div>
-  </div>
+       <h1>Events</h1>
+       {{#each events}}
+       <div class="card mt-3">
+         <img class="card-img-top" src="{{this.dataValues.imgUrl}}" alt="Card image cap">
+         <div class="card-body">
+           <h5 class="card-title">{{this.dataValues.title}}</h5>
+           <p class="card-text">{{this.dataValues.desc}}</p>
+           <div class="text-right">
+             <a href="#" class="btn btn-info">Rsvp</a>
+             <a href="/events/{{this.dataValues.id}}" class="btn btn-primary">View</a>
+           </div>
+         </div>
+       </div>
+       {{/each}}
+     </div>
+ </div>

@@ -3,9 +3,16 @@ const models = require('./db/models');
 
 // Initialize express
 const express = require('express')
+const methodOverride = require('method-override')
 const app = express()
 // require handlebars
 var exphbs = require('express-handlebars');
+
+// The following line must appear AFTER const app = express() and before your routes!
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'))
 
 // Use "main" as our default layout
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
@@ -74,3 +81,25 @@ app.get('/events/:id', (req, res) => {
     console.log(err.message);
   })
 })
+
+// EDIT
+app.get('/events/:id/edit', (req, res) => {
+  models.Event.findByPk(req.params.id).then((event) => {
+    res.render('events-edit', { event: event });
+  }).catch((err) => {
+    console.log(err.message);
+  })
+});
+
+// UPDATE
+app.put('/events/:id', (req, res) => {
+  models.Event.findByPk(req.params.id).then(event => {
+    event.update(req.body).then(event => {
+      res.redirect(`/events/${req.params.id}`);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }).catch((err) => {
+    console.log(err);
+  });
+});
