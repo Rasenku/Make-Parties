@@ -1,6 +1,5 @@
 const bodyParser = require('body-parser');
 const models = require('./db/models');
-
 // Initialize express
 const express = require('express')
 const methodOverride = require('method-override')
@@ -31,6 +30,9 @@ var events = [
   ]
 
 require('./controllers/events')(app, models);
+require('./controllers/events')(app, models);
+require('./controllers/rsvps')(app, models);
+
 
   // INDEX
   app.get('/', (req, res) => {
