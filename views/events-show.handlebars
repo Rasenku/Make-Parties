@@ -1,12 +1,12 @@
 <div class="row mt-4">
   <div class="col-lg-6">
       <img class="img-fluid w-100 rounded mb-3" src="{{event.dataValues.imgUrl}}" alt="Card image cap">
-        <small class="text-muted">Created on: {{event.dataValues.createdAtFormatted}}</small>
+        <small class="text-muted">Created on: {{event.createdAtFormatted}}</small>
 
 
         <h3>{{event.dataValues.title}}</h3>
         <div class="lead">{{event.dataValues.desc}}</div>
-        <div class="text-right">
+        <div class="text-right"> 
             <a href="/events/{{event.dataValues.id}}/edit">Edit</a>
         </div>
   </div>
@@ -17,7 +17,7 @@
     </div>
 
     <div class="list-group mt-4">
-      {{#each event.dataValues.Rsvps}}
+      {{#each event.Rsvps}}
         <div class="list-group-item clearfix">
           <div class="float-left">
             {{this.dataValues.name}}
