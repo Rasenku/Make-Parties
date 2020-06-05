@@ -30,6 +30,8 @@ var events = [
     { title: "I am your third event", desc: "A great event that is super fun to look at and good", imgUrl: "https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA4OC85MTEvb3JpZ2luYWwvZ29sZGVuLXJldHJpZXZlci1wdXBweS5qcGVn" }
   ]
 
+require('./controllers/events')(app, models);
+
   // INDEX
   app.get('/', (req, res) => {
     models.Event.findAll({ order: [['createdAt', 'DESC']] }).then(events => {
